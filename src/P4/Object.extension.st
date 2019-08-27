@@ -3,12 +3,21 @@ Extension { #name : #Object }
 { #category : #'*P4' }
 Object >> dump: var on: binaryOut for: aReference at: offset [
 	| instVarReference |
-	(var isKindOf: SmallInteger) 
-		ifTrue: [	binaryOut pointerPut: var asTaggedInteger at: aReference pointerOffset: offset-1 ]
-		ifFalse: [instVarReference := binaryOut localDump: var.
-				binaryOut pointerPut: instVarReference addend at: aReference pointerOffset: offset - 1.
-			 	binaryOut referTo: instVarReference at: aReference pointerOffset: offset-1 ]
-
+	(var isKindOf: SmallInteger)
+		ifTrue: [ binaryOut
+				pointerPut: var asTaggedInteger
+				at: aReference
+				pointerOffset: offset - 1 ]
+		ifFalse: [
+			instVarReference := binaryOut localDump: var. 
+			binaryOut
+				pointerPut: instVarReference addend
+				at: aReference
+				pointerOffset: offset - 1.
+			binaryOut
+				referTo: instVarReference
+				at: aReference
+				pointerOffset: offset - 1 ]
 ]
 
 { #category : #'*P4' }
