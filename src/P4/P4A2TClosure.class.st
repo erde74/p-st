@@ -75,6 +75,13 @@ P4A2TClosure >> methodSuper [
 P4A2TClosure >> storeBasePointer [ 
 ]
 
+{ #category : #visiting }
+P4A2TClosure >> visitLiteralValueNode: aRBLiteralValueNode [
+	"Redirect the message by default to #visitLiteralNode: for retrocompatibility (pharo 8)"
+
+	^ self visitLiteralNode: aRBLiteralValueNode
+]
+
 { #category : #'as yet unclassified' }
 P4A2TClosure >> visitReturnNode: aReturnNode [
 	| ret |

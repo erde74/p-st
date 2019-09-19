@@ -133,6 +133,13 @@ P4A2TMethod >> unrollPrimitive [
 	helper unrollPrimitiveFor: callable
 ]
 
+{ #category : #visiting }
+P4A2TMethod >> visitLiteralValueNode: aRBLiteralValueNode [
+	"Redirect the message by default to #visitLiteralNode: for retrocompatibility (pharo 8)"
+
+	^ self visitLiteralNode: aRBLiteralValueNode
+]
+
 { #category : #visitor }
 P4A2TMethod >> visitMethodNode: aMethod [
 	| entry currentCapture |
