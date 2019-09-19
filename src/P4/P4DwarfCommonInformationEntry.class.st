@@ -19,7 +19,7 @@ P4DwarfCommonInformationEntry >> augmentation [
 ]
 
 { #category : #'as yet unclassified' }
-P4DwarfCommonInformationEntry >> cieId. [
+P4DwarfCommonInformationEntry >> cieId [.
 	^ 0
 ]
 
@@ -77,6 +77,6 @@ P4DwarfCommonInformationEntry >> returnAddressRegister: anObject [
 ]
 
 { #category : #'as yet unclassified' }
-P4DwarfCommonInformationEntry >> version. [
+P4DwarfCommonInformationEntry >> version [.
 	^ 1
 ]
