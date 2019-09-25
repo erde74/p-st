@@ -4,6 +4,11 @@ Class {
 	#category : #'P4-Kernel-Boolean'
 }
 
+{ #category : #controlling }
+P4False >> and: aClosure [
+	^ aClosure value
+]
+
 { #category : #spec }
 P4False >> ifFalse: aBlock [
 	^ aBlock value  

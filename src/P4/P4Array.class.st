@@ -18,12 +18,39 @@ P4Array class >> with: stuff [
 	^array
 ]
 
+{ #category : #accessing }
+P4Array >> at: index [
+	<preventExport>
+	^ super at: index
+]
+
+{ #category : #accessing }
+P4Array >> at: index put: object [
+	<preventExport>
+	^ super at: index put: object
+]
+
 { #category : #'as yet unclassified' }
 P4Array >> do: aBlock [
 	| size |
 	size := self size.
 	1 to: size do: [ :element |
 		aBlock value: (self at: element) ]
+]
+
+{ #category : #accessing }
+P4Array >> pAt: index [
+	<renameExport: #'at:'>
+	<pprimitive: #basicAt>
+	'access out of bounds or non integer index' print.
+	self pHalt
+]
+
+{ #category : #accessing }
+P4Array >> pAt: index put: object [
+	<renameExport: #'at:put:'>
+	<pprimitive: #basicAtPut>
+	
 ]
 
 { #category : #'as yet unclassified' }
