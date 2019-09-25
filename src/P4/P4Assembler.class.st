@@ -185,9 +185,9 @@ P4Assembler >> tagClosure: aClosure [
 
 { #category : #'initialize-release' }
 P4Assembler >> tagMethod: aTacMethod [
-	linker 
-		putLabel: aTacMethod methodObject 
-		at: 0 - stream pointerSize * (aTacMethod literals size + 1)
+	linker
+		putLabel: aTacMethod methodObject
+		at: (0 - stream pointerSize) * (aTacMethod literals size + 1)
 ]
 
 { #category : #'initialize-release' }

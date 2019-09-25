@@ -740,6 +740,7 @@ P4X86_64 >> test: firstReg with: secondReg [
 
 { #category : #instructions }
 P4X86_64 >> testBit: bit on: reg [
+	(reg combination = 1) ifTrue: [ self prefixFor: reg ].
 	self secondOrderCode.
 	self writeInstruction: 16rBA mask: 2r100 reg: reg.
 	stream nextPut: bit

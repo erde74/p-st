@@ -147,6 +147,12 @@ P4Object >> doesNotUnderstand: selector [
 ]
 
 { #category : #spec }
+P4Object >> error: string [
+	string print.
+	self pHalt.
+]
+
+{ #category : #spec }
 P4Object >> expectationFail: got expected: expected [
 	'expectation not met. got:' print.
 	got printObj.
@@ -237,7 +243,7 @@ P4Object >> or: aBlock [
 P4Object >> pBasicAt: key [
 	<pprimitive: #basicAt>
 	<renameExport: #basicAt:>  
-	self pHalt 
+	self error: 'Object>>basicAt: failed. this is not an arrayed object'.
 ]
 
 { #category : #accessing }
@@ -267,6 +273,7 @@ P4Object >> pDoesNotUnderstand: message [
 			message arguments do: [ :arg |
 				arg print ]].
 	'<------' print.
+	"self pHalt."
 ]
 
 { #category : #testing }
@@ -299,6 +306,14 @@ P4Object >> pInspect [
 { #category : #'message handling' }
 P4Object >> pLookupSelector: aSelector [
 	^ self lookupSelector: aSelector
+]
+
+{ #category : #'message performing' }
+P4Object >> perform: selector with: args [
+	| behavior method |
+	behavior := self behavior.
+	method := (behavior lookup: selector for: self).
+	^ method perform: selector on: self with: args.
 ]
 
 { #category : #accessing }

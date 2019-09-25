@@ -33,7 +33,7 @@ P4Dictionary >> at: key [
 
 { #category : #accessing }
 P4Dictionary >> at: key ifAbsent: aBlock [
-	<pPrimitive: #at:ifAbsent: plugin: #'Collection.Dictionary'>
+	<pprimitive: #at:ifAbsent: plugin: #'Collection.Dictionary'>
 	linear ifTrue: [ ^ (buckets at: 1) at: key ifAbsent: aBlock ].
 	^ (buckets at: key pHash \\ buckets size + 1)
 		ifNil: [ aBlock value ]
@@ -131,7 +131,7 @@ P4Dictionary >> includes: anObject [
 
 { #category : #testing }
 P4Dictionary >> includesKey: key [
-	<pPrimitive: #includesKey: plugin: #'Collection.Dictionary'>
+	<pprimitive: #includesKey: plugin: #'Collection.Dictionary'>
 	linear ifTrue: [ ^ (buckets at: 1) includesKey: key ].
 	^ (buckets at: key pHash \\ buckets size + 1)
 		ifNil: [ false ]
